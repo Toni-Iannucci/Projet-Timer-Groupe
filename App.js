@@ -17,6 +17,10 @@ mongoose.connect('mongodb+srv://Toni:Tonic@cluster0.wxdzvma.mongodb.net/?retryWr
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 
+
+/* **** ROUTES POUR DELETE/POST/UPDATE/GET ***** */
+
+
 // Permet l'accés à notre API
 // D'ajouter les headers aux requêtes
 // D'envoyer des requêtes avec les méthodes
@@ -27,11 +31,18 @@ app.use((req, res, next) => {
   next();
 });
 
-// Réception des données 
+// Ajout des données 
 app.post('/', (req, res, next) => {
   const thing = new Thing({
     // Va copier les champs dans le corps de la req
     // Peut aussi le faire comme ça : title: req.body.tittle,
+      /* Test
+    taskName: "Coucou",
+    projectName:"Couco",
+    userId: 29  1,
+    personne:"Toni",
+    tempsTotal:899
+*/
   ...req.body
 });
 // Sauvegarder les données 
