@@ -1,10 +1,33 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const Thing = require('./models/Thing');
+
+const projetRoutes = require('./routes/projet');
 const app = express();
 
-app.get('/', (req, res) => {
-  res.send('Hello Salut');
+// Permet d'intercepter les requêtes qui contiennent sur json et mettent à disposition sur l'objet requête
+app.use(express.json());
+
+// Connection BDD
+// Correspond à l'utilsateur que nous avons fait dans mongoAtlas
+// Ici l'utilisateur peut modifier et écrire dans la BDD
+mongoose.connect('mongodb+srv://Toni:Tonic@cluster0.wxdzvma.mongodb.net/?retryWrites=true&w=majorityy',
+  { useNewUrlParser: true,
+    useUnifiedTopology: true })
+  .then(() => console.log('Connexion à MongoDB réussie !'))
+  .catch(() => console.log('Connexion à MongoDB échouée !'));
+
+// Permet l'accés à notre API
+// D'ajouter les headers aux requêtes
+// D'envoyer des requêtes avec les méthodes
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+  next();
 });
 
-app.listen(3000, () => {
-  console.log('Server listening on port 3000');
-});
+// Ici à la place du '/' mettre la route vers le truc 
+// Exemple /api/stuff
+app.use('/',projetRoutes);
+module.exports = app;
