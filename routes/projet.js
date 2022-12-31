@@ -22,4 +22,6 @@ router.post('/',projetCtrl.createThing);
   router.post('/:id/timer/start', projectController.startTimer);
   // pause timer 
   router.put('/:id/timer/pause', projectController.pauseTimer);
+  // stop timer 
+  router.put('/:id/timer/stop', projectController.stopTimer);
 module.exports = router;

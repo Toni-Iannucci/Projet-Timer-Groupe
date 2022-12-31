@@ -35,3 +35,22 @@ exports.pauseTimer = (req, res) => {
       .catch(err => console.log(err));
   });
 };
+
+exports.stopTimer = (req, res) => {
+  const { id } = req.params;
+
+  Project.findById(id).then(project => {
+    if (!project) {
+      return res.status(404).json({ error: 'Projet introuvable' });
+    }
+
+    // Arrêtez le timer du projet en remettant la durée totale à zéro
+    project.totalDuration = 0;
+    project.timerStart = null;
+    project
+      .save()
+      .then(project => res.json(project))
+      .catch(err => console.log(err));
+  });
+};
+
