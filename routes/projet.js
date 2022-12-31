@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const projetCtrl = require('../controller/projet');
+const projetCtrl = require('../controllers/projet');
 
 
 /* **** ROUTES POUR DELETE/POST/UPDATE/GET ***** */
