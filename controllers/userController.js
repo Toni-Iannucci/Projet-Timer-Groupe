@@ -1,32 +1,35 @@
-const User = require('../models/userModel');
+const User = require('../models/user');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
-exports.register = (req, res) => {
-  const { username, password, email } = req.body;
+exports.login = (req, res) => {
+  const { email, password } = req.body;
 
-  // Vérifiez si l'utilisateur existe déjà
+  // Vérifiez si l'utilisateur existe
   User.findOne({ email }).then(user => {
-    if (user) {
-      return res.status(400).json({ error: 'L\'utilisateur existe déjà' });
-    } else {
-      // Créez un nouvel utilisateur
-      const newUser = new User({
-        username,
-        password,
-        email
-      });
-
-      // Chiffrez le mot de passe avant de l'enregistrer en base de données
-      bcrypt.genSalt(10, (err, salt) => {
-        bcrypt.hash(newUser.password, salt, (err, hash) => {
-          if (err) throw err;
-          newUser.password = hash;
-          newUser
-            .save()
-            .then(user => res.json(user))
-            .catch(err => console.log(err));
-        });
-      });
+    if (!user) {
+      return res.status(404).json({ error: 'L\'utilisateur n\'existe pas' });
     }
+
+    // Vérifiez le mot de passe
+    bcrypt.compare(password, user.password).then(isMatch => {
+      if (isMatch) {
+        // Créez un token JWT
+        const payload = { id: user.id, username: user.username };
+        jwt.sign(
+          payload,
+          process.env.SECRET_OR_KEY,
+          { expiresIn: 3600 },
+          (err, token) => {
+            res.json({
+              success: true,
+              token: 'Bearer ' + token
+            });
+          }
+        );
+      } else {
+        return res.status(400).json({ error: 'Mot de passe incorrect' });
+      }
+    });
   });
 };
