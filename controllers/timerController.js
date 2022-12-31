@@ -16,3 +16,22 @@ exports.startTimer = (req, res) => {
       .catch(err => console.log(err));
   });
 };
+
+exports.pauseTimer = (req, res) => {
+  const { id } = req.params;
+
+  Project.findById(id).then(project => {
+    if (!project) {
+      return res.status(404).json({ error: 'Projet introuvable' });
+    }
+
+    // Mettre en pause le timer du projet en enregistrant la durée écoulée depuis le démarrage du timer
+    const elapsedTime = Date.now() - project.timerStart;
+    project.totalDuration += elapsedTime;
+    project.timerStart = null;
+    project
+      .save()
+      .then(project => res.json(project))
+      .catch(err => console.log(err));
+  });
+};
