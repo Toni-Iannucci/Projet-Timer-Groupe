@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const projetCtrl = require('../controllers/projet');
-
+const projectController = require('../controllers/timerController');
 
 /* **** ROUTES POUR DELETE/POST/UPDATE/GET ***** */
 
@@ -21,6 +21,7 @@ router.post('/',projetCtrl.createThing);
   
   // Supprime un thing de la BDD
   router.delete('/:id',projetCtrl.deleteThing);
-
+  // start timer 
+  router.post('/:id/timer/start', projectController.startTimer);
 
 module.exports = router;
