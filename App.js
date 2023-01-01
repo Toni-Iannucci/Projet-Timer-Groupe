@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Thing = require('./models/Thing');
-
+const userRoute = require('./routes/userRoute');
 const projetRoutes = require('./routes/projet');
 const app = express();
 
@@ -29,5 +29,5 @@ app.use((req, res, next) => {
 
 // Ici à la place du '/' mettre la route vers le truc 
 // Exemple /api/stuff
-app.use('/',projetRoutes);
+app.use('/api/routes',projetRoutes);
 module.exports = app;
