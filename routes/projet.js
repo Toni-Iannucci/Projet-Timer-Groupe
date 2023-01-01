@@ -16,6 +16,7 @@ router.post('/',projetCtrl.createThing);
   
   // Récup les objets 
   router.get('/',projetCtrl.getAllThings);
+  
   // Récup un objet spécifique en trouvant son ID
   router.get('/:id',projetCtrl.getOneThing)
   
