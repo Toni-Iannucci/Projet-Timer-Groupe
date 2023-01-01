@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <title>Vue Timer</title>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Se connecter</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="timer.html">Vue Timer</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="projet.html">Vue Projet</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="team.html">Vue Team</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+        <div class="centerForm">
+            <form>
+                <div class="centerForm">
+                    <table class="table table-bordered border-primary"">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Tâche</th>
+                            <th scope="col">Projet </th>
+                            <th scope="col">Timer</th>
+                            <th scope="col">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td> <form>
+                                
+                                  <input type="text" class="form-control" id="projectName" placeholder="Nom de votre Tache">
+                                
+                                </form>
+                            </td>
+                            <td><select class="form-select" aria-label="Default select example">
+                                <option selected>Open this select menu</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                              </select></th></td>
+                            <td>00:02:55</td>
+                            <td><button type="button" class="btn btn-primary">Start</button>
+                                <button type="button" class="btn btn-danger"> Stop</button></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+              </form>
+            </div>
+            <div class="centerForm">
+                <table class="table table-bordered border-primary"">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Tâche</th>
+                        <th scope="col">Projet</th>
+                        <th scope="col">Timer</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Mise en place du back</td>
+                        <td>Le projet de Toni</td>
+                        <td>00:02:55</td>
+                        <td><button type="button" class="btn btn-danger"> Supprimer</button></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Mise en place du front</td>
+                        <td>Le projet de Toni</td>
+                        <td>15:02:15</td>
+                        <td><button type="button" class="btn btn-danger"> Supprimer</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </main>
+      </body>
+      </html>
