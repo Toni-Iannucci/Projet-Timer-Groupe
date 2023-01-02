@@ -1,9 +1,9 @@
-const Thing = require('../models/Thing');
+const Task = require('../models/Task');
 
 
 
-exports.createThing = (req, res, next) => {
-    const thing = new Thing({
+exports.createTask = (req, res, next) => {
+    const task = new Task({
       // Va copier les champs dans le corps de la req
       // Peut aussi le faire comme ça : title: req.body.tittle,
         /* Test
@@ -16,37 +16,37 @@ exports.createThing = (req, res, next) => {
     ...req.body
   });
   // Sauvegarder les données 
-  thing.save()
+  task.save()
     .then(() => res.status(201).json({ message: 'enregistré !'}))
     .catch(error => res.status(400).json({ error }));
   };
 
   // Modifier  les données
-  exports.modifyThing = (req, res, next) => {
-    Thing.updateOne({ _id: req.params.id }, { ...req.body, _id: req.params.id })
+  exports.modifyTask = (req, res, next) => {
+    Task.updateOne({ _id: req.params.id }, { ...req.body, _id: req.params.id })
       .then(() => res.status(200).json({ message: 'modifié !'}))
       .catch(error => res.status(400).json({ error }));
   };
 
   // Supprimer les données
-  exports.deleteThing =  (req, res, next) => {
-    Thing.deleteOne({ _id: req.params.id })
+  exports.deleteTask =  (req, res, next) => {
+    Task.deleteOne({ _id: req.params.id })
       .then(() => res.status(200).json({ message: 'Objet supprimé !'}))
       .catch(error => res.status(400).json({ error }));
   };
 
   // Chercher une donnée particuliere
-  exports.getOneThing = (req, res, next) => {
-    Thing.findOne({ _id: req.params.id })
-      .then(thing => res.status(200).json(thing))
+  exports.getOneTask = (req, res, next) => {
+    Task.findOne({ _id: req.params.id })
+      .then(task => res.status(200).json(task))
       .catch(error => res.status(404).json({ error }));
   };
 
   // Récup toutes les données
-  exports.getAllThings = (req, res, next) => {
+  exports.getAllTasks = (req, res, next) => {
     // Trouver la liste complète 
-    Thing.find()
+    Task.find()
       // Retourne un tableau de tous les things dans la base de données 
-      .then(things => res.status(200).json(things))
+      .then(tasks => res.status(200).json(tasks))
       .catch(error => res.status(400).json({ error }));
   };

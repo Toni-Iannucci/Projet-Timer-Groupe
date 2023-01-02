@@ -1,4 +1,4 @@
-const Project = require('../models/Thing');
+const Project = require('../models/Task');
 
 exports.startTimer = (req, res) => {
   const { id } = req.params;
