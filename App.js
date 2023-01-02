@@ -29,5 +29,5 @@ app.use((req, res, next) => {
 
 // Ici à la place du '/' mettre la route vers le truc 
 // Exemple /api/stuff
-app.use('/api/routes',projetRoutes);
+app.use('/',projetRoutes);
 module.exports = app;

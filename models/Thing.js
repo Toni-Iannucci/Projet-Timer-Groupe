@@ -6,6 +6,7 @@ const thingSchema = mongoose.Schema({
   userId: { type: Number, required: true },
   personne: { type: String, required: true },
   tempsTotal: { type: Number, required: true },
+  
   title: {
     type: String,
     required: true

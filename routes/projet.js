@@ -9,16 +9,17 @@ const projectController = require('../controllers/timerController');
 
 
 // Ajout des données
-router.post('/',projetCtrl.createThing);
+router.post('/projet',projetCtrl.createThing);
   // Modification d'un thing existant 
-  router.put('/',projetCtrl.modifyThing);
+  router.put('/projet',projetCtrl.modifyThing);
   // Récup les objets 
-  router.get('/',projetCtrl.getAllThings);
+  router.get('/projet',projetCtrl.getAllThings);
   
   // Récup un objet spécifique en trouvant son ID
-  router.get('/:id',projetCtrl.getOneThing)
+  router.get('/projet/:id',projetCtrl.getOneThing)
   // Supprime un thing de la BDD
-  router.delete('/:id',projetCtrl.deleteThing);
+  router.delete('/projet/:id',projetCtrl.deleteThing);
+
   // start timer 
   router.post('/:id/timer/start', projectController.startTimer);
   // pause timer 
