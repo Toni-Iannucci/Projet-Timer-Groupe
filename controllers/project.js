@@ -7,11 +7,7 @@ exports.createProject = (req, res, next) => {
       // Va copier les champs dans le corps de la req
       // Peut aussi le faire comme ça : title: req.body.tittle,
         /* Test
-      taskName: "Coucou",
       projectName:"Coucou",
-      userId: 29  1,
-      personne:"Toni",
-      tempsTotal:899
   */
     ...req.body
   });
