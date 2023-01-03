@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 
+// Permet Utilisation unique de adresse mail
+const uniqueValidator = require('mongoose-unique-validator');
+
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -17,6 +20,6 @@ const userSchema = new mongoose.Schema({
   }
 });
 
-const User = mongoose.model('User', userSchema);
+userSchema.plugin(uniqueValidator);
 
-module.exports = User;
+module.exports = mongoose.model('User', userSchema);

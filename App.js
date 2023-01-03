@@ -5,14 +5,14 @@ const userRoute = require('./routes/userRoute');
 const taskRoutes = require('./routes/task');
 const app = express();
 
-// Permet d'intercepter les requêtes qui contiennent sur json et mettent à disposition sur l'objet requête
+// Permet d'intercepter les requêtes qui contiennent sur Json et mettent à disposition sur l'objet requête
 app.use(express.json());
 
 // Connection BDD
 // Correspond à l'utilsateur que nous avons fait dans mongoAtlas
 // Ici l'utilisateur peut modifier et écrire dans la BDD
-mongoose.connect('mongodb+srv://Toni:Tonic@cluster0.wxdzvma.mongodb.net/?retryWrites=true&w=majorityy',
-  { useNewUrlParser: true,
+mongoose.connect('mongodb+srv://Toni:Tonic@cluster0.wxdzvma.mongodb.net/?retryWrites=true&w=majority',
+{ useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
@@ -29,5 +29,5 @@ app.use((req, res, next) => {
 
 // Ici à la place du '/' mettre la route vers le truc 
 // Exemple /api/stuff
-app.use('/',taskRoutes);
+// app.use('/',taskRoutes);
 module.exports = app;
