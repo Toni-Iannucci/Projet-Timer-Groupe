@@ -2,13 +2,14 @@ const express = require('express');
 const router = express.Router();
 const taskCtrl = require('../controllers/task');
 const timerController = require('../controllers/timerController');
-const auth = require('../middleware/auth');
+const authController = require('../controllers/UserController');
 
 
 /* **** ROUTES POUR DELETE/POST/UPDATE/GET ***** */
 
-
-
+//authentification 
+router.post('/signup', authController.signup);
+router.post('/signin', authController.signin);
 
 // Ajout des données
 router.post('/task',taskCtrl.createTask);
