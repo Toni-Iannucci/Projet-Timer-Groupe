@@ -5,7 +5,7 @@ exports.startTimer = (req, res) => {
 
   Project.findById(id).then(project => {
     if (!project) {
-      return res.status(404).json({ error: 'Projet introuvable' });
+      return res.status(404).json({ error: 'Project not found' });
     }
 
     // Démarrez le timer du projet en enregistrant l'heure actuelle
@@ -22,7 +22,7 @@ exports.pauseTimer = (req, res) => {
 
   Project.findById(id).then(project => {
     if (!project) {
-      return res.status(404).json({ error: 'Projet introuvable' });
+      return res.status(404).json({ error: 'Project not found' });
     }
 
     // Mettre en pause le timer du projet en enregistrant la durée écoulée depuis le démarrage du timer
@@ -41,7 +41,7 @@ exports.stopTimer = (req, res) => {
 
   Project.findById(id).then(project => {
     if (!project) {
-      return res.status(404).json({ error: 'Projet introuvable' });
+      return res.status(404).json({ error: 'Project not found' });
     }
 
     // Arrêtez le timer du projet en remettant la durée totale à zéro

@@ -7,41 +7,41 @@ exports.createProject = (req, res, next) => {
       // Va copier les champs dans le corps de la req
       // Peut aussi le faire comme ça : title: req.body.tittle,
         
-      projectName:"Coucou",
+      projectName:"Chimba",
   
   });
-  // Sauvegarder les données 
+  // Sauvegarder un projet 
   project.save()
-    .then(() => res.status(201).json({ message: 'enregistré !'}))
+    .then(() => res.status(201).json({ message: 'Project saved !!'}))
     .catch(error => res.status(400).json({ error }));
   };
 
-  // Modifier  les données
+  // Modifier un projet
   exports.modifyProject = (req, res, next) => {
     Project.updateOne({ _id: req.params.id }, { ...req.body, _id: req.params.id })
-      .then(() => res.status(200).json({ message: 'modifié !'}))
+      .then(() => res.status(200).json({ message: 'Project updated !!'}))
       .catch(error => res.status(400).json({ error }));
   };
 
-  // Supprimer les données
+  // Supprimer un projet
   exports.deleteProject =  (req, res, next) => {
     Project.deleteOne({ _id: req.params.id })
-      .then(() => res.status(200).json({ message: 'Objet supprimé !'}))
+      .then(() => res.status(200).json({ message: 'Project deleted !'}))
       .catch(error => res.status(400).json({ error }));
   };
 
-  // Chercher une donnée particuliere
+  // Chercher un projet particulier
   exports.getOneProject = (req, res, next) => {
     Project.findOne({ _id: req.params.id })
       .then(project => res.status(200).json(project))
       .catch(error => res.status(404).json({ error }));
   };
 
-  // Récup toutes les données
+  // Récup tous les projets
   exports.getAllProjects = (req, res, next) => {
     // Trouver la liste complète 
     Project.find()
-      // Retourne un tableau de tous les things dans la base de données 
+      // Retourner un tableau de tous les projets dans la base de données 
       .then(projects => res.status(200).json(projects))
       .catch(error => res.status(400).json({ error }));
   };

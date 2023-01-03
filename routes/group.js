@@ -10,14 +10,14 @@ const authController = require('../controllers/UserController');
 
 // Ajout des données
 router.post('/group',groupCtrl.createGroup);
-  // Modification d'un thing existant 
+  // Modification d'un groupe existant 
   router.put('/group',groupCtrl.modifyGroup);
-  // Récup les objets 
+  // Récup les groupes 
   router.get('/group',groupCtrl.getAllGroups);
   
-  // Récup un objet spécifique en trouvant son ID
+  // Récup un groupe spécifique en trouvant son ID
   router.get('/group/:id',groupCtrl.getOneGroup)
-  // Supprime un thing de la BDD
+  // Supprimer un groupe de la BDD
   router.delete('/group/:id',groupCtrl.deleteGroup);
 
 
