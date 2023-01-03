@@ -37,34 +37,37 @@ const signup = (req, res) => {
       });
   });
 };
- const login = (req, res) => {
+
+const signin = (req, res) => {
   const { email, password } = req.body;
 
-  // Vérifiez si l'utilisateur existe
-  User.findOne({ email }).then(user => {
-    if (!user) {
-      return res.status(404).json({ error: 'L\'utilisateur n\'existe pas' });
+  if (!email || !password) {
+    return res.status(422).json({ error: 'Please enter email and password' });
+  }
+
+  User.findOne({ email }).then((savedUser) => {
+    if (!savedUser) {
+      return res.status(422).json({ error: 'Invalid email or password' });
     }
 
-    // Vérifiez le mot de passe
-    bcrypt.compare(password, user.password).then(isMatch => {
-      if (isMatch) {
-        // Créez un token JWT
-        const payload = { id: user.id, username: user.username };
-        jwt.sign(
-          payload,
-          process.env.SECRET_OR_KEY,
-          { expiresIn: 3600 },
-          (err, token) => {
-            res.json({
-              success: true,
-              token: 'Bearer ' + token
-            });
-          }
-        );
-      } else {
-        return res.status(400).json({ error: 'Mot de passe incorrect' });
-      }
-    });
+    bcrypt
+      .compare(password, savedUser.password)
+      .then((doMatch) => {
+        if (doMatch) {
+          // generate token
+          const token = jwt.sign({ _id: savedUser._id }, 'SECRET_KEY');
+          res.json({ token });
+        } else {
+          return res.status(422).json({ error: 'Invalid email or password' });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   });
+};
+
+module.exports = {
+  signup,
+  signin,
 };

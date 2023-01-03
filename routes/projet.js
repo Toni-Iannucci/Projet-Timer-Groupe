@@ -1,12 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const projetCtrl = require('../controllers/projet');
-
+const authController = require('../controllers/userController');
 
 /* **** ROUTES POUR DELETE/POST/UPDATE/GET ***** */
-
-
-
 
 // Ajout des données
 router.post('/',projetCtrl.createThing);
@@ -22,5 +19,8 @@ router.post('/',projetCtrl.createThing);
   // Supprime un thing de la BDD
   router.delete('/:id',projetCtrl.deleteThing);
 
+ 
 
+  router.post('/signup', authController.signup);
+  router.post('/signin', authController.signin);
 module.exports = router;
