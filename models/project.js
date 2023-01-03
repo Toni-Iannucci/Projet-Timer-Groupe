@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
-const projetSchema = mongoose.Schema({
+const projectSchema = mongoose.Schema({
   projectName: { type: String, required: true }, 
 });
 
 // Export du model
-module.exports = mongoose.model('Projet', projetSchema);
+module.exports = mongoose.model('Project', projectSchema);

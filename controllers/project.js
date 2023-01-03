@@ -1,9 +1,9 @@
-const Projet = require('../models/Projet');
+const Project = require('../models/project');
 // Coucou
 
 
-exports.createProjet = (req, res, next) => {
-    const projet = new Projet({
+exports.createProject = (req, res, next) => {
+    const project = new Project({
       // Va copier les champs dans le corps de la req
       // Peut aussi le faire comme ça : title: req.body.tittle,
         /* 
@@ -13,37 +13,37 @@ exports.createProjet = (req, res, next) => {
     ...req.body
   });
   // Sauvegarder les données 
-  projet.save()
+  project.save()
     .then(() => res.status(201).json({ message: 'enregistré !'}))
     .catch(error => res.status(400).json({ error }));
   };
 
   // Modifier  les données
-  exports.modifyProjet = (req, res, next) => {
-    Projet.updateOne({ _id: req.params.id }, { ...req.body, _id: req.params.id })
+  exports.modifyProject = (req, res, next) => {
+    Project.updateOne({ _id: req.params.id }, { ...req.body, _id: req.params.id })
       .then(() => res.status(200).json({ message: 'modifié !'}))
       .catch(error => res.status(400).json({ error }));
   };
 
   // Supprimer les données
-  exports.deleteProjet =  (req, res, next) => {
-    Projet.deleteOne({ _id: req.params.id })
+  exports.deleteProject =  (req, res, next) => {
+    Project.deleteOne({ _id: req.params.id })
       .then(() => res.status(200).json({ message: 'Objet supprimé !'}))
       .catch(error => res.status(400).json({ error }));
   };
 
   // Chercher une donnée particuliere
-  exports.getOneProjet = (req, res, next) => {
-    Projet.findOne({ _id: req.params.id })
-      .then(projet => res.status(200).json(projet))
+  exports.getOneProject = (req, res, next) => {
+    Project.findOne({ _id: req.params.id })
+      .then(project => res.status(200).json(project))
       .catch(error => res.status(404).json({ error }));
   };
 
   // Récup toutes les données
-  exports.getAllProjets = (req, res, next) => {
+  exports.getAllProjects = (req, res, next) => {
     // Trouver la liste complète 
-    Projet.find()
+    Project.find()
       // Retourne un tableau de tous les things dans la base de données 
-      .then(projets => res.status(200).json(projets))
+      .then(projects => res.status(200).json(projects))
       .catch(error => res.status(400).json({ error }));
   };

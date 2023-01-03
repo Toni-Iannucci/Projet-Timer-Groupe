@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Task = require('./models/Task');
 const userRoute = require('./routes/userRoute');
 const taskRoutes = require('./routes/task');
-const projetRoutes = require('./routes/projet');
+const projectRoutes = require('./routes/project');
 const app = express();
 
 // Permet d'intercepter les requêtes qui contiennent sur json et mettent à disposition sur l'objet requête
@@ -31,5 +31,5 @@ app.use((req, res, next) => {
 // Ici à la place du '/' mettre la route vers le truc 
 // Exemple /api/stuff
 app.use('/',taskRoutes);
-app.use('/',projetRoutes);
+app.use('/',projectRoutes);
 module.exports = app;
