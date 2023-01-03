@@ -4,7 +4,7 @@ const Project = require('../models/Project');
 
 exports.createProject = (req, res, next) => {
     const project = new Project({
-      // Va copier les champs dans le corps de la req
+      // Copie les champs dans le corps de la req
       // Peut aussi le faire comme ça : title: req.body.tittle,
         
       projectName:"Chimba",
