@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 const taskCtrl = require('../controllers/task');
 const timerController = require('../controllers/timerController');
-const auth = require('../middleware/auth');
-
 
 /* **** ROUTES POUR DELETE/POST/UPDATE/GET ***** */
 

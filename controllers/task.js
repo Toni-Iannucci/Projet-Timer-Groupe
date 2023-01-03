@@ -7,9 +7,9 @@ exports.createTask = (req, res, next) => {
       // Va copier les champs dans le corps de la req
       // Peut aussi le faire comme ça : title: req.body.tittle,
         /* Test
-      taskName: "Faire le back",
-      projectName:"Proj",
-      userId: 291,
+      taskName: "Coucou",
+      projectName:"Couco",
+      userId: 29  1,
       personne:"Toni",
       tempsTotal:899
   */

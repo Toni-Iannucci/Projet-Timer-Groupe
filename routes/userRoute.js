@@ -1,16 +1,3 @@
-
-const express = require('express');
-const router = express.Router();
-
-const userCtrl = require('../controllers/userController');
-
-router.post('/signup', userCtrl.signup);
-router.post('/login', userCtrl.login);
-
-module.exports = router;
-
-
-/*
 const express = require('express');
 const router = express.Router();
 
@@ -19,4 +6,3 @@ const authController = require('../controllers/userController');
 router.post('/login', authController.login);
 
 module.exports = router;
-*/
