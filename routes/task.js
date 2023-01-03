@@ -5,7 +5,9 @@ const timerController = require('../controllers/timerController');
 
 /* **** ROUTES POUR DELETE/POST/UPDATE/GET ***** */
 
-
+//authentification 
+router.post('/signup', authController.signup);
+router.post('/signin', authController.signin);
 
 
 // Ajout des données

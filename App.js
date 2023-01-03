@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Task = require('./models/Task');
-const userRoute = require('./routes/userRoute');
 const taskRoutes = require('./routes/task');
 const projectRoutes = require('./routes/project');
 const app = express();
