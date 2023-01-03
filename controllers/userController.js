@@ -2,7 +2,42 @@ const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-exports.login = (req, res) => {
+const signup = (req, res) => {
+  const { username, password, email } = req.body;
+
+  if (!username || !password || !email) {
+    return res.status(422).json({ error: 'Please fill all the fields' });
+  }
+
+  User.findOne({ email }).then((savedUser) => {
+    if (savedUser) {
+      return res.status(422).json({ error: 'Email already exists' });
+    }
+
+    bcrypt
+      .hash(password, 12)
+      .then((hashedPassword) => {
+        const user = new User({
+          username,
+          email,
+          password: hashedPassword,
+        });
+
+        user
+          .save()
+          .then((user) => {
+            res.json({ message: 'Successfully registered' });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+};
+ const login = (req, res) => {
   const { email, password } = req.body;
 
   // Vérifiez si l'utilisateur existe
