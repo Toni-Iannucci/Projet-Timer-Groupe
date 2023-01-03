@@ -5,7 +5,7 @@ const userRoute = require('./routes/userRoute');
 const taskRoutes = require('./routes/task');
 const app = express();
 
-// Permet d'intercepter les requêtes qui contiennent sur json et mettent à disposition sur l'objet requête
+// Permet d'intercepter les requêtes qui contiennent sur Json et mettent à disposition sur l'objet requête
 app.use(express.json());
 
 // Connection BDD
@@ -29,5 +29,5 @@ app.use((req, res, next) => {
 
 // Ici à la place du '/' mettre la route vers le truc 
 // Exemple /api/stuff
-app.use('/',taskRoutes);
+// app.use('/',taskRoutes);
 module.exports = app;
