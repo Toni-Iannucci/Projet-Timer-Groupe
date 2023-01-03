@@ -17,21 +17,21 @@ exports.createTask = (req, res, next) => {
   });
   // Sauvegarder les données 
   task.save()
-    .then(() => res.status(201).json({ message: 'enregistré !'}))
+    .then(() => res.status(201).json({ message: 'Task saved !!'}))
     .catch(error => res.status(400).json({ error }));
   };
 
   // Modifier  les données
   exports.modifyTask = (req, res, next) => {
     Task.updateOne({ _id: req.params.id }, { ...req.body, _id: req.params.id })
-      .then(() => res.status(200).json({ message: 'modifié !'}))
+      .then(() => res.status(200).json({ message: 'Task modified !'}))
       .catch(error => res.status(400).json({ error }));
   };
 
   // Supprimer les données
   exports.deleteTask =  (req, res, next) => {
     Task.deleteOne({ _id: req.params.id })
-      .then(() => res.status(200).json({ message: 'Objet supprimé !'}))
+      .then(() => res.status(200).json({ message: 'Task deleted !!'}))
       .catch(error => res.status(400).json({ error }));
   };
 
