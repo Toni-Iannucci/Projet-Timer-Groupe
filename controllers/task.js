@@ -6,14 +6,14 @@ exports.createTask = (req, res, next) => {
     const task = new Task({
       // Va copier les champs dans le corps de la req
       // Peut aussi le faire comme ça : title: req.body.tittle,
-        /* Test
-      taskName: "Coucou",
-      projectName:"Couco",
-      userId: 29  1,
-      personne:"Toni",
+        
+      taskName: "Faire le back",
+      projectName:"Projet",
+      userId: 291,
+      personne:"St",
       tempsTotal:899
-  */
-    ...req.body
+  
+    
   });
   // Sauvegarder les données 
   task.save()
