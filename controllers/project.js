@@ -6,10 +6,9 @@ exports.createProject = (req, res, next) => {
     const project = new Project({
       // Va copier les champs dans le corps de la req
       // Peut aussi le faire comme ça : title: req.body.tittle,
-        /* Test
+        
       projectName:"Coucou",
-  */
-    ...req.body
+  
   });
   // Sauvegarder les données 
   project.save()
@@ -18,7 +17,7 @@ exports.createProject = (req, res, next) => {
   };
 
   // Modifier  les données
-  exports.modifyTask = (req, res, next) => {
+  exports.modifyProject = (req, res, next) => {
     Project.updateOne({ _id: req.params.id }, { ...req.body, _id: req.params.id })
       .then(() => res.status(200).json({ message: 'modifié !'}))
       .catch(error => res.status(400).json({ error }));

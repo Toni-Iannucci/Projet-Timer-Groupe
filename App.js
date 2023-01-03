@@ -1,12 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Task = require('./models/Task');
+const projectRoutes = require('./routes/project');
 const taskRoutes = require('./routes/task');
 
 const app = express();
 // Permet d'intercepter les requêtes qui contiennent sur Json et mettent à disposition sur l'objet requête
 app.use(express.json());
-app.use(taskRoutes)
+app.use(projectRoutes);
+app.use(taskRoutes);
 
 
 
