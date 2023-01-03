@@ -19,8 +19,7 @@ router.post('/',projetCtrl.createThing);
   // Supprime un thing de la BDD
   router.delete('/:id',projetCtrl.deleteThing);
 
- 
-
+  // auth
   router.post('/signup', authController.signup);
   router.post('/signin', authController.signin);
 module.exports = router;
