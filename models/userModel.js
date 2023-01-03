@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 
+// Permet Utilisation unique de adresse mail
+const uniqueValidator = require('mongoose-unique-validator');
+
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
