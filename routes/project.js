@@ -21,11 +21,5 @@ router.post('/project',projectCtrl.createProject);
   router.delete('/project/:id',projectCtrl.deleteProject);
 
 
-  
-  // start timer 
-  router.post('/:id/timer/start', timerController.startTimer);
-  // pause timer 
-  router.put('/:id/timer/pause', timerController.pauseTimer);
-  // stop timer 
-  router.put('/:id/timer/stop', timerController.stopTimer);
+
 module.exports = router;
